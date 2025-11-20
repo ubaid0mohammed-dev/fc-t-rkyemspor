@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Türkyemspor - Offizielle Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #900;
+            --primary-dark: #700;
+            --dark: #1d1d1d;
+            --light: #f5f5f5;
+            --white: #fff;
+            --gray: #777;
+            --success: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header mit verbessertem Design */
+        header {
+            background: var(--primary);
+            padding: 0;
+            color: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 60px;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 5px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.3s;
+            border-radius: 5px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            background: var(--primary-dark);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            right: 20px;
+            height: 3px;
+            background: var(--white);
+        }
+
+        /* Banner mit verbessertem Design */
+        .banner {
+            background: linear-gradient(135deg, var(--light) 0%, #e8e8e8 100%);
+            text-align: center;
+            padding: 25px 5%;
+            border-bottom: 4px solid var(--primary);
+            margin-top: 80px;
+        }
+
+        .banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .banner img {
+            max-height: 80px;
+            transition: transform 0.3s;
+        }
+
+        .banner img:hover {
+            transform: scale(1.05);
+        }
+
+        .banner-text {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section verbessert */
+        .hero {
+            background: linear-gradient(rgba(144,0,0,0.85), rgba(29,29,29,0.85)),
+                        url('https://images.unsplash.com/photo-1556056504-5c7696c4c28?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: var(--white);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Sections verbessert */
+        section {
+            padding: 80px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Verein Section verbessert */
+        .verein-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .verein-text {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--primary);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .team-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .team-card ul {
+            list-style: none;
+        }
+
+        .team-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .team-card li:last-child {
+            border-bottom: none;
+        }
+
+        .team-card li i {
+            color: var(--primary);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Spielplan verbessert */
+        .fixture {
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .fixture table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .fixture th {
+            background: var(--primary);
+            color: var(--white);
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .fixture td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .fixture tr:nth-child(even) {
+            background: var(--light);
+        }
+
+        .fixture tr:hover {
+            background: #f0f0f0;
+        }
+
+        /* Sponsoren Section verbessert */
+        .sponsoren-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .sponsor-main {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            transition: transform 0.3s;
+        }
+
+        .sponsor-main:hover {
+            transform: translateY(-5px);
+        }
+
+        .sponsor-main img {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .sponsor-main h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .sponsor-main p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .sponsor-link {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .sponsor-link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Kontakt Section verbessert */
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-form h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus, 
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: var(--primary-dark);
+        }
+
+        .contact-info {
+            background: var(--primary);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 5px;
+        }
+
+        /* Footer verbessert */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ccc;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+            
+            nav {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav a {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .banner {
+                margin-top: 120px;
+            }
+            
+            .hero {
+                padding: 100px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="/mnt/data/3992d38d-34fb-4f29-a73b-cb73dcab8cb2.png" alt="FC Türkyemspor Logo">
+            <div class="logo-text">FC Türkyemspor</div>
+        </div>
+        <nav>
+            <a href="#home" class="active">Startseite</a>
+            <a href="#verein">Verein</a>
+            <a href="#spielplan">Spielplan</a>
+            <a href="#sponsoren">Sponsoren</a>
+            <a href="#kontakt">Kontakt</a>
+        </nav>
+    </div>
+</header>
+
+<div class="banner">
+    <div class="banner-content">
+        <a href="https://www.ddrive.ch" target="_blank">
+            <img src="/mnt/data/992de0da-61c8-4487-9711-6c730d31f27c.png" alt="D'DRIVE Fahrschule Daskin Banner">
+        </a>
+        <div class="banner-text">Unser Hauptsponsor - D'DRIVE Fahrschule Daskin</div>
+    </div>
+</div>
+
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>FC Türkyemspor Aarau</h1>
+        <p>Leidenschaft für Fussball seit 1988 – 4. Liga Schweiz</p>
+        <div class="hero-buttons">
+            <a href="#spielplan" class="btn">Nächste Spiele</a>
+            <a href="#kontakt" class="btn btn-outline">Probetraining</a>
+        </div>
+    </div>
+</section>
+
+<section id="verein">
+    <div class="section-header">
+        <h2>Unser Verein</h2>
+        <p class="section-subtitle">Gemeinschaft, Leidenschaft und Fussball seit 1988</p>
+    </div>
+    
+    <div class="verein-content">
+        <p class="verein-text">
+            Der FC Türkyemspor wurde 1988 gegründet und ist heute fester Bestandteil der Fussballgemeinschaft in Aarau. 
+            Unser Ziel ist es, sowohl den Breitensport als auch die Jugendförderung zu unterstützen und eine starke Gemeinschaft aufzubauen.
+        </p>
+        
+        <div class="team-grid">
+            <div class="team-card">
+                <h3>Trainerteam</h3>
+                <ul>
+                    <li><i class="fas fa-user-tie"></i> <strong>Trainer:</strong> Halil Yilmaz</li>
+                    <li><i class="fas fa-user-friends"></i> <strong>Assistenztrainer:</strong> Uenal Cakar</li>
+                    <li><i class="fas fa-phone"></i> <strong>Tel:</strong> +41 76 344 91 79</li>
+                </ul>
+            </div>
+            
+            <div class="team-card">
+                <h3>Vorstand</h3>
+                <ul>
+                    <li><i class="fas fa-user-tie"></i> <strong>Präsident:</strong> Ibrahim Karakelle</li>
+                    <li><i class="fas fa-phone"></i> <strong>Tel:</strong> +41 76 340 98 99</li>
+                    <li><i class="fas fa-user-tie"></i> <strong>Sekretär:</strong> Ugur Emre</li>
+                    <li><i class="fas fa-phone"></i> <strong>Tel:</strong> +41 77 450 58 51</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="spielplan">
+    <div class="section-header">
+        <h2>Spielplan</h2>
+        <p class="section-subtitle">Die nächsten Begegnungen unserer Mannschaft</p>
+    </div>
+    
+    <div class="fixture">
+        <table>
+            <tr>
+                <th>Datum</th>
+                <th>Begegnung</th>
+                <th>Ort</th>
+                <th>Zeit</th>
+            </tr>
+            <tr>
+                <td>23.03.2025</td>
+                <td><strong>FC Türkyemspor vs FC Suhr</strong></td>
+                <td>Schachen Aarau</td>
+                <td>15:00</td>
+            </tr>
+            <tr>
+                <td>30.03.2025</td>
+                <td><strong>FC Mühlethal vs FC Türkyemspor</strong></td>
+                <td>Mühlethal</td>
+                <td>16:00</td>
+            </tr>
+            <tr>
+                <td>06.04.2025</td>
+                <td><strong>FC Türkyemspor vs SC Kölliken</strong></td>
+                <td>Schachen Aarau</td>
+                <td>14:30</td>
+            </tr>
+            <tr>
+                <td>13.04.2025</td>
+                <td><strong>FC Unterkulm vs FC Türkyemspor</strong></td>
+                <td>Unterkulm</td>
+                <td>15:30</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="sponsoren">
+    <div class="section-header">
+        <h2>Sponsoren</h2>
+        <p class="section-subtitle">Ein herzliches Dankeschön an unsere Unterstützer</p>
+    </div>
+    
+    <div class="sponsoren-content">
+        <div class="sponsor-main">
+            <a href="https://www.ddrive.ch" target="_blank">
+                <img src="/mnt/data/992de0da-61c8-4487-9711-6c730d31f27c.png" alt="D'DRIVE Fahrschule Daskin">
+            </a>
+            <h3>D'DRIVE Fahrschule Daskin</h3>
+            <p>Ihr zuverlässiger Partner für Fahrausbildung im Raum Aarau / Lenzburg</p>
+            <a href="https://www.ddrive.ch" target="_blank" class="sponsor-link">Zur Website</a>
+        </div>
+    </div>
+</section>
+
+<section id="kontakt">
+    <div class="section-header">
+        <h2>Kontakt</h2>
+        <p class="section-subtitle">Treten Sie mit uns in Kontakt für Probetraining oder Informationen</p>
+    </div>
+    
+    <div class="contact-container">
+        <div class="contact-form">
+            <h3>Kontaktformular</h3>
+            <form action="https://formspree.io/f/xzzozdan" method="POST">
+                <input type="hidden" name="_subject" value="Neue Anfrage FC Türkyemspor">
+                
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-Mail *</label>
+                    <input type="email" id="email" name="_replyto" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="betreff">Betreff</label>
+                    <select id="betreff" name="subject">
+                        <option value="">Bitte wählen</option>
+                        <option value="Probetraining">Probetraining</option>
+                        <option value="Sponsoring">Sponsoring</option>
+                        <option value="Allgemein">Allgemeine Anfrage</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Nachricht *</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit">Nachricht senden</button>
+            </form>
+        </div>
+        
+        <div class="contact-info">
+            <h3>Kontaktinformationen</h3>
+            
+            <div class="contact-item">
+                <h4>Präsidium</h4>
+                <p><strong>Ibrahim Karakelle</strong><br>
+                Präsident<br>
+                Tel: +41 76 340 98 99<br>
+                E-Mail: praesident@fctuerkyemspor.ch</p>
+            </div>
+            
+            <div class="contact-item">
+                <h4>Sportleitung</h4>
+                <p><strong>Halil Yilmaz</strong><br>
+                Trainer & Sportchef<br>
+                Tel: +41 79 234 56 78<br>
+                E-Mail: sportchef@fctuerkyemspor.ch</p>
+            </div>
+            
+            <div class="contact-item">
+                <h4>Heimspiele</h4>
+                <p><strong>Sportplatz Schachen</strong><br>
+                Schachenstrasse<br>
+                5000 Aarau<br>
+                Schweiz</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="#home">Startseite</a>
+            <a href="#verein">Verein</a>
+            <a href="#spielplan">Spielplan</a>
+            <a href="#sponsoren">Sponsoren</a>
+            <a href="#kontakt">Kontakt</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 FC Türkyemspor Aarau | Offizielle Website</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Smooth Scroll für Navigation
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Aktive Navigation hervorheben
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+        
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
